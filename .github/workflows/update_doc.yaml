@@ -27,7 +27,7 @@ jobs:
              git submodule absorbgitdirs && 
              git -C sub config core.sparseCheckout True && 
              echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/ &&
-             git submodule update --force --checkout sub && 
+             git submodule update --force --checkout docs && 
              ls &&
              ls docs
 
