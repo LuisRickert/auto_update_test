@@ -18,8 +18,14 @@ jobs:
         with: 
             repository: "LuisRickert/filter-branch-source"
             path: kit-repo
+      - name: test
+        run: |
+            ls
       - name: nav to main repo
         run: cd main-repo
+      - name: test
+        run: |
+            ls
       - name: submodule add 
         run: |
           git submodule add git@github.com:LuisRickert/filter-branch-source.git docs/test
