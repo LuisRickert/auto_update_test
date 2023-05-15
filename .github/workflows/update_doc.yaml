@@ -23,7 +23,7 @@ jobs:
             ls
       - name: nav to main repo
         run: cd main-repo &&
-             git submodule add ../kit-repo #&&            
+             git submodule add ../kit-repo sub #&&            
 
     #   - name: submodule add 
     #     run: |
