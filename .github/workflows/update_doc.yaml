@@ -23,26 +23,30 @@ jobs:
             ls
       - name: nav to main repo
         run: cd main-repo &&
-             ls &&
              git submodule add https://github.com/LuisRickert/filter-branch-source.git docs &&            
-             ls
+             git submodule absorbgitdirs && 
+             git -C sub config core.sparseCheckout True && 
+             echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/ &&
+             git submodule update --force --checkout sub && 
+             ls &&
+             ls docs
 
     #   - name: submodule add 
     #     run: |
     #       git submodule add git@github.com:LuisRickert/filter-branch-source.git docs/test
-      - name: absorb
-        run: |
-            git submodule absorbgitdirs
-      - name: submodule sparse checkout activation
-        run: |
-            git -C sub config core.sparseCheckout True
-      - name: sparsecheckout pattern
-        run: |
-            echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/
-      - name: do checkout
-        run: |
-            git submodule update --force --checkout sub
-      - name: checkout results
-        run: |
-            ls docs
+    #   - name: absorb
+    #     run: |
+    #         git submodule absorbgitdirs
+    #   - name: submodule sparse checkout activation
+    #     run: |
+    #         git -C sub config core.sparseCheckout True
+    #   - name: sparsecheckout pattern
+    #     run: |
+    #         echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/
+    #   - name: do checkout
+    #     run: |
+    #         git submodule update --force --checkout sub
+    #   - name: checkout results
+    #     run: |
+    #         ls docs
       
