@@ -23,7 +23,7 @@ jobs:
             ls
       - name: nav to main repo
         run: cd main-repo &&
-             git submodule add https://github.com/LuisRickert/filter-branch-source.git docs &&            
+             git submodule add ../kit-repo docs &&            
              git submodule absorbgitdirs && 
              git -C docs config core.sparseCheckout True && 
              echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/ &&
