@@ -21,15 +21,22 @@ jobs:
       - name: test
         run: |
             ls
-      - name: nav to main repo
-        run: cd main-repo &&
-             git submodule add ../kit-repo docs &&            
-             git submodule absorbgitdirs && 
-             git -C docs config core.sparseCheckout True && 
-             echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/ &&
-             git submodule update --force --checkout docs && 
-             ls &&
-             ls docs
+      - name: copy docs
+        run: |
+            mkdir -p main-repo/docs/test-kit &&
+            cp -r kit-repo/documentation/ main-repo/docs/test-kit
+      - name: verify resutls
+        run: | 
+            ls -R main-repo/docs/
+    #   - name: nav to main repo
+    #     run: cd main-repo &&
+    #          git submodule add ../kit-repo docs &&            
+    #          git submodule absorbgitdirs && 
+    #          git -C docs config core.sparseCheckout True && 
+    #          echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/ &&
+    #          git submodule update --force --checkout docs && 
+    #          ls &&
+    #          ls docs
 
     #   - name: submodule add 
     #     run: |
