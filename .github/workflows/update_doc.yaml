@@ -22,7 +22,7 @@ jobs:
         run: cd main-repo
       - name: submodule add 
         run: |
-          git submodule add https://github.com/LuisRickert/filter-branch-source.git docs/test
+          git submodule add git@github.com:LuisRickert/filter-branch-source.git docs/test
       - name: absorb
         run: |
             git submodule absorbgitdirs
