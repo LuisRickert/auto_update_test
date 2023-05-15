@@ -22,7 +22,7 @@ jobs:
         run: |
             ls
       - name: nav to main repo
-        run: cd main-repo
+        run: cd main-repo &&
              ls            
       - name: submodule add 
         run: |
