@@ -1,0 +1,41 @@
+name: Update submodule
+run-name: ${{ github.actor }} update Documentation 🚀
+on: [push]
+jobs:
+  Create-Documentatio-Branch:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with: 
+            path: main-repo
+      - name: check out kit repo
+        uses: actions/checkout@v3
+        with: 
+            repository: "LuisRickert/filter-branch-source"
+            path: kit-repo
+      - name: nav to main repo
+        run: cd main-repo
+      - name: submodule add 
+        run: |
+          git submodule add https://github.com/LuisRickert/filter-branch-source.git docs/test
+      - name: absorb
+        run: |
+            git submodule absorbgitdirs
+      - name: submodule sparse checkout activation
+        run: |
+            git -C sub config core.sparseCheckout True
+      - name: sparsecheckout pattern
+        run: |
+            echo 'documentation/*.md' >> ../kit-repo/.git/modules/path/
+      - name: do checkout
+        run: |
+            git submodule update --force --checkout sub
+      - name: checkout results
+        run: |
+            ls docs
+      
