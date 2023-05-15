@@ -24,7 +24,7 @@ jobs:
       - name: nav to main repo
         run: cd main-repo &&
              ls &&
-             git submodule add LuisRickert/filter-branch-source sub #&&            
+             git submodule add https://github.com/LuisRickert/filter-branch-source.git docs #&&            
 
     #   - name: submodule add 
     #     run: |
